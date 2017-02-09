@@ -17,7 +17,6 @@ class queue {
     int id;
     int start;
     int next;
-    //double wait[MAX];
   public:
     queue(int);
     ~queue();

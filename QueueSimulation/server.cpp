@@ -8,7 +8,7 @@
 
 #include "server.hpp"
 
-int server::nextID = 1;
+int server::nextID = 0;
 
 server::server() {
 	state = false;

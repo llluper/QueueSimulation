@@ -11,27 +11,27 @@
 
 #include "constants.h"
 #include "server.hpp"
-//#include "simulation.hpp"
 #include <iostream>
 
 template <class T>
 class heap {
 public:
-	int size;
+	int heapSize;
 	T *servers;
+  int n_busy;
 	heap(int);
 	~heap();
 	void siftup(int);
 	void siftdown(int);
 	void siftdowner(int);
 	void swap(T&, T&);
-	int n_busy;
+  void print();
 };
 
 template <class T>
 heap<T>::heap(int size) {
-	this->size = size;
-	servers = new server[size];
+	heapSize = size;
+	servers = new T[size];
 	n_busy = 0;
 }
 
@@ -57,7 +57,7 @@ void heap<T>::siftdown(int i) {
     bool skip = false;
 
     while (!skip) {
-        int c = (i * 2) + 1;
+        int c = left(i);
         bool lexists = (c <= n_busy);
         bool rexists = (c + 1 < n_busy);
 
@@ -105,6 +105,13 @@ void heap<T>::swap(T &x, T &y) {
     T t = x;
 		x = y;
 		y = t;
+}
+
+template <class T>
+void heap<T>::print() {
+    std::cout << "Printing heap...\n";
+    for (int i = 0; i < heapSize; i++)
+      std::cout << servers[i].id << " " << servers[i].data << "\n";
 }
 
 #endif /* heap_hpp */

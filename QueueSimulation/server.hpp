@@ -26,10 +26,8 @@ protected:
 		bool getState() { return state; }
 		void setState(bool state) { this->state = state; }
 		double getData() { return data; }
-		void setData(double data) { this->data = data; }
+		void setData(double data) { this->data = data; this->state = true;}
 		server& operator=(const server &);
 };
-
-//int server::nextID = 1;
 
 #endif /* server_hpp */

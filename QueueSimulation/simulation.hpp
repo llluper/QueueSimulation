@@ -35,30 +35,22 @@ class simulation {
     int maxQueueLength;
     double lastServiceComplete, serverIdleTime[MAX], maxQueueWaitTime, averageServiceTime, averageQueueTime, totalQueueWaitTime, allQueue;
     double allServiceTimes;
-    //queue qWait[MAX];
     queue *myQueue;
     queue *myQueueSystem;
-    //queue myQueueSystem[MAX];
     ifstream ins;
-
+    heap<server> *theHeap;
+    double nextServiceTime;
+    double serviceTime;
   public:
     simulation();
     ~simulation();
-    //INLINE FUNCTIONS
-
-    //void setn_servers(int x) { n_servers = x; };
     bool serversEmpty(int n_busy) { return (n_busy == 0); }
-
-    //void swapAll(int, int);
-    //void swapservers(int, int);
-    //void siftup(int);
-    //void siftdown(int);
-    //void siftdowner(int);
-    //int findSmallestQueue();
     int n_servers;
     void start();
     void printResults();
     bool openFile();
+    void processArrival();
+    void serviceComplete();
 };
 
 
